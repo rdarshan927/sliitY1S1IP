@@ -37,7 +37,7 @@ int main(void)
             else
             {
                 printf("You have entered an invalid attendance status!\n");
-                i--; // Decrement the counter to repeat the input for the same day
+                i--; 
             }
         }
         fprintf(comEmpAttendance, "\n");
@@ -56,17 +56,17 @@ int main(void)
 
         if (strcmp(empNo, fempNo) == 0)
         {
-            for (int j = 0; j < 7; j++)
+            for (j = 0; j < 7; j++)
             {
                 fscanf(comEmpAttendance, "%d", &attendanceStatus);
                 arrived += attendanceStatus;
             }
             break;
         }
-        else
-        {
-            fscanf(comEmpAttendance, "%s", fempNo);
-        }
+        //else
+        //{
+            //fscanf(comEmpAttendance, "%s", fempNo);
+        //}
     }
     fclose(comEmpAttendance);
 
