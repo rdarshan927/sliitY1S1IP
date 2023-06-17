@@ -5,7 +5,7 @@
 
 int main(void)
 {
-    char word[15];
+    char word[20];
     char temp;
     int i, len;
 
