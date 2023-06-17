@@ -4,36 +4,42 @@
 int main(void)
 {
     char name[15], fName[15];
-    int loyNum, fLoyNum, check;
-    FILE *loyalCust;
-    loyalCust = fopen("loyalty.dat", "r");
+    int loyalty, fLoyalty;
 
-    printf("Enter the name : ");
-    scanf("%s", &name);
-    printf("Enter the loyalty number : ");
-    scanf("%d", &loyNum);
+    FILE *customer;
+    customer = fopen("loyalty.dat", "r");
 
-    fscanf(loyalCust, "%d%s", &fLoyNum, &fName);
-
-    while(!feof(loyalCust))
+    if(customer == NULL)
     {
-        if(loyNum == fLoyNum)
+        printf("The file doesn't exist ...");
+        return -1;
+    }
+
+    fscanf(customer, "%d%s", &fLoyalty, fName);
+
+    printf("Enter the name of the customer : ");
+    scanf("%s", name);
+    printf("Enter the loyalty number : ");
+    scanf("%d", &loyalty);
+
+
+
+    while(!feof(customer))
+    {
+        if(loyalty == fLoyalty)
         {
-            printf("Loyalty number already exists.");
-            fclose(loyalCust);
+            printf("The data already exist ...");
+            fclose(customer);
             return -1;
         }
-        else
-        {
-            fscanf(loyalCust, "%d%s", &fLoyNum, &fName);
-        }
+        fscanf(customer, "%d%s", &fLoyalty, fName);
     }
-    fclose(loyalCust);
+    fclose(customer);
 
-    loyalCust = fopen("loyalty.dat", "a");
-    fprintf(loyalCust, "%d\t%s\n", loyNum, name);
-    printf("The details has been stored succefully.");
-    fclose(loyalCust);
+    customer = fopen("loyalty.dat", "a");
+    fprintf(customer, "%d\t%s\n", loyalty, name);
+    printf("The data has been stored succefully ...");
+    fclose(customer);
 
     return 0;
 }
