@@ -1,8 +1,6 @@
 #include<stdio.h>
 #include<string.h>
 
-//completed
-
 int main(void)
 {
     char word[20];
@@ -12,6 +10,8 @@ int main(void)
     printf("Enter the word : ");
     scanf("%s", word);
 
+    printf("Original array : %s\n\n", word);
+
     len = strlen(word);
 
     for(i=1; i<=len/2; i++)
@@ -20,7 +20,7 @@ int main(void)
         word[i-1] = word[len-i];
         word[len-i] = temp;
     }
-    printf("%s", word);
+    printf("Reversed array : %s", word);
 
     return 0;
 }
