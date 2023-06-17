@@ -1,17 +1,26 @@
 #include<stdio.h>
+#include<string.h>
+
+//completed
 
 int main(void)
 {
-    char strArr[15][1];
-    int i, j;
+    char word[15];
+    char temp;
+    int i, len;
 
-    printf("Enter the text to reverse : ");
-    scanf("%s", &strArr);
+    printf("Enter the word : ");
+    scanf("%s", word);
 
-    for(i=0; i<15; i++)
+    len = strlen(word);
+
+    for(i=1; i<=len/2; i++)
     {
-        printf("%s", strArr[i]);
+        temp = word[i-1];
+        word[i-1] = word[len-i];
+        word[len-i] = temp;
     }
+    printf("%s", word);
 
     return 0;
 }
